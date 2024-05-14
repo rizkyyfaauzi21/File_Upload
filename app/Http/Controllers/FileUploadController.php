@@ -41,8 +41,14 @@ class FileUploadController extends Controller
         $extfile = $request->berkas->getClientOriginalName();
         $namaFile = 'web-' . time() . "." . $extfile;
         // $path = $request->berkas->store('uploads');
-        $path = $request->berkas->storeAs('uploads', $namaFile);
-        echo "proses upload berhasil, data disimpan pada: $path";
+        $path = $request->berkas->storeAs('public', $namaFile);
+        // echo "proses upload berhasil, data disimpan pada: $path";
+
+        $pathBaru = asset('storage/' . $namaFile);
+        echo "Proses upload berhasil, data disimpan pada: $pathBaru";
+        echo "<br>";
+        echo "Tampilkan link: <a href='$pathBaru'>$pathBaru</a>";
+
         // echo "proses upload berhasil, file berada di: $path";
         // echo $request->berkas->getClientOriginalName() . "lolos validasi";
     }
