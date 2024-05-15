@@ -19,7 +19,14 @@
         <form action="{{ url('/file-upload') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="berkas" class="form-label">Gambar Profile</label>
+                <label for="name_picture" class="form-label">Name Picture</label>
+                <input type="text" class="form-control" id="name_picture" name="name_picture">
+                @error('name_picture')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="berkas" class="form-label">File</label>
                 <input type="file" class="form-control" id="berkas" name="berkas">
                 @error('berkas')
                 <div class="text-danger">{{ $message }}</div>
